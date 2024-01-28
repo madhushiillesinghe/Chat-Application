@@ -16,6 +16,6 @@ public class LoginController {
     private TextField txtUserName;
 
     public void btnLoginOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
-        Navigation.switchNavigation("ChatForm.fxml",actionEvent);
+        Navigation.switchNavigation("ClientForm.fxml",actionEvent);
     }
 }
