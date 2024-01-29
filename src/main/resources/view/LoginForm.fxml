@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.chat.controller.LoginController">
+<AnchorPane prefHeight="600.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.chat.controller.client.LoginController">
    <children>
       <Button layoutX="634.0" layoutY="391.0" mnemonicParsing="false" onAction="#btnLoginOnAction" styleClass="btn-Login" stylesheets="@../LoginStyle.css" text="LOGIN" />
       <TextField fx:id="txtUserName" layoutX="585.0" layoutY="259.0" promptText="           User Name" styleClass="txt-UserName" stylesheets="@../LoginStyle.css" />

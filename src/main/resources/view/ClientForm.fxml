@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="400.0" style="-fx-background-color: #3C70E0FF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.chat.controller.ClientController">
+<AnchorPane prefHeight="650.0" prefWidth="400.0" style="-fx-background-color: #3C70E0FF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.chat.controller.client.ClientController">
    <children>
       <TextField fx:id="txtMessage" layoutX="19.0" layoutY="599.0" onAction="#txtMessageOnAction" prefHeight="38.0" prefWidth="331.0" style="-fx-background-radius: 30; -fx-background-color: white;" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="599.0">
          <font>
