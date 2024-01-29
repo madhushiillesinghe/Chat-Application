@@ -8,7 +8,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import lk.ijse.chat.util.Navigation;
 
 import java.io.*;
 import java.net.Socket;
@@ -48,9 +50,17 @@ public class ClientController extends Thread implements Initializable {
     PrintWriter writer;
 
     @FXML
-    void addImgOnAction(MouseEvent event) {
+    public Pane imojiPaneId;
+    private static ClientController controller;
 
+    public ClientController(){
+        controller = this;
     }
+
+    public static ClientController getInstance(){
+        return controller;
+    }
+
 
     @FXML
     void img1OnAction(MouseEvent event) {
@@ -102,7 +112,7 @@ public class ClientController extends Thread implements Initializable {
 
     private void connectSocket() {
         try {
-            socket = new Socket("localhost",3000);
+            socket = new Socket("localhost",5600);
             DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());
             dataOutputStream.writeUTF(LoginController.userName);
             dataOutputStream.flush();
@@ -127,5 +137,17 @@ public class ClientController extends Thread implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void addIconOnAction(MouseEvent mouseEvent) {
+    }
+
+    public void addImageOnAction(MouseEvent mouseEvent) throws IOException {
+        Navigation.popupPane("ImojiPaneForm.fxml");
+    }
+
+    public void imojiOnAction(MouseEvent mouseEvent) throws IOException {
+        Navigation.popupPane("ImojiPaneForm.fxml");
+
     }
 }

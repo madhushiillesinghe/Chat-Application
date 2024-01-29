@@ -8,16 +8,16 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 public class ServerInizializer  extends Application {
-
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/ServerForm.fxml"));
-        stage.setScene(new Scene(root));
-        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/view/ServerForm.fxml"))));
+        stage.setTitle("Server");
+        stage.centerOnScreen();
+        // stage.setFullScreen(true);
         stage.show();
     }
 }

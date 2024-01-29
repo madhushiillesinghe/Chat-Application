@@ -13,19 +13,6 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="400.0" style="-fx-background-color: #3C70E0FF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.chat.controller.client.ClientController">
    <children>
-      <TextField fx:id="txtMessage" layoutX="19.0" layoutY="599.0" onAction="#txtMessageOnAction" prefHeight="38.0" prefWidth="331.0" style="-fx-background-radius: 30; -fx-background-color: white;" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="599.0">
-         <font>
-            <Font size="15.0" />
-         </font>
-         <padding>
-            <Insets left="20.0" />
-         </padding>
-      </TextField>
-      <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="319.0" layoutY="608.0" onMouseClicked="#sendOnAction" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assest/sendIcon.png" />
-         </image>
-      </ImageView>
       <Pane layoutX="3.0" layoutY="2.0" prefHeight="64.0" prefWidth="400.0" style="-fx-background-color: #1A2A5EFF;" AnchorPane.bottomAnchor="586.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="22.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
@@ -45,5 +32,61 @@
             <VBox fx:id="msgVbox" prefHeight="491.0" prefWidth="384.0" />
          </content>
       </ScrollPane>
+      <Pane fx:id="imojiPaneId" layoutX="33.0" layoutY="539.0" prefHeight="48.0" prefWidth="268.0" style="-fx-background-color: white;" visible="false">
+         <children>
+            <ImageView fx:id="img1" fitHeight="23.0" fitWidth="23.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#img1OnAction">
+               <image>
+                  <Image url="@../assest/img1.jpeg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img2" fitHeight="24.0" fitWidth="29.0" layoutX="60.0" layoutY="14.0" onMouseClicked="#img2OnAction">
+               <image>
+                  <Image url="@../assest/img2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img3" fitHeight="25.0" fitWidth="29.0" layoutX="111.0" layoutY="14.0" onMouseClicked="#img3OnAction">
+               <image>
+                  <Image url="@../assest/img5.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img4" fitHeight="21.0" fitWidth="23.0" layoutX="158.0" layoutY="15.0" onMouseClicked="#img4OnAction">
+               <image>
+                  <Image url="@../assest/img3.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img5" fitHeight="26.0" fitWidth="38.0" layoutX="199.0" layoutY="11.0" onMouseClicked="#img5OnAction">
+               <image>
+                  <Image url="@../assest/img4.jpeg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="19.0" layoutY="587.0" prefHeight="38.0" prefWidth="371.0" style="-fx-background-color: white; -fx-background-radius: 15;">
+         <children>
+            <ImageView fitHeight="24.0" fitWidth="29.0" layoutX="8.0" layoutY="7.0" onMouseClicked="#addImageOnAction">
+               <image>
+                  <Image url="@../assest/addIcon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imojiIcon" fitHeight="23.0" fitWidth="23.0" layoutX="37.0" layoutY="8.0" onMouseClicked="#imojiOnAction">
+               <image>
+                  <Image url="@../assest/img1.jpeg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtMessage" layoutX="66.0" onAction="#txtMessageOnAction" prefHeight="38.0" prefWidth="261.0" style="-fx-background-radius: 30; -fx-background-color: white;">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </TextField>
+            <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="334.0" layoutY="9.0" onMouseClicked="#sendOnAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assest/sendIcon.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

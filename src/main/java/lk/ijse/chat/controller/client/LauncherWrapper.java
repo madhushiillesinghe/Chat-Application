@@ -1,4 +1,5 @@
-package lk.ijse.chat;
+package lk.ijse.chat.controller.client;
+
 
 
 public class LauncherWrapper {

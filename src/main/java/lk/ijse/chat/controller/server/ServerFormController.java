@@ -35,9 +35,9 @@ public class ServerFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try{
-            serverSocket= new ServerSocket(4000);
-            System.out.println("server started");
-            //areaDetail.appendText("Server Strated");
+            serverSocket= new ServerSocket(5600);
+            //System.out.println("server started");
+            areaDetail.appendText("Server Strated");
             while (true) {
                 clientSocket=serverSocket.accept();
                 areaDetail.appendText("\nClient connected: " + clientSocket);
