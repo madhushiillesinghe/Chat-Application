@@ -1,4 +1,4 @@
-package lk.ijse.client1.controller;
+package lk.ijse.client2.controller;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.application.Platform;
@@ -7,7 +7,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;

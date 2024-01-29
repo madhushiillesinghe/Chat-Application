@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.client2.controller.LoginController">
+   <children>
+      <Button layoutX="634.0" layoutY="391.0" mnemonicParsing="false" onAction="#btnLoginOnAction" styleClass="btn-Login" text="LOGIN">
+         <stylesheets>
+            <URL value="@../style/LoginStyle.css" />
+            <URL value="@../style/LoginStyle.css" />
+         </stylesheets></Button>
+      <TextField fx:id="txtUserName" layoutX="585.0" layoutY="259.0" promptText="           User Name" styleClass="txt-UserName" stylesheets="@../style/LoginStyle.css" />
+      <AnchorPane prefHeight="518.0" prefWidth="372.0" style="-fx-background-color: white;" />
+      <ImageView fitHeight="600.0" fitWidth="471.0">
+         <image>
+            <Image url="@../assest/Login.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="82.0" fitWidth="83.0" layoutX="618.0" layoutY="134.0">
+         <image>
+            <Image url="@../assest/user.jpeg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="63.0" fitWidth="70.0" layoutX="492.0" layoutY="341.0">
+         <image>
+            <Image url="@../assest/ChatImage.jpeg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

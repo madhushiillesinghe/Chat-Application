@@ -1,0 +1,12 @@
+.btn-Login:hover{
+    -fx-effect: dropshadow(gaussian, #c70c0c,20,0.0,0,0);
+}
+.btn-Login{
+    -fx-background-radius: 10px;
+}
+.btn-Login{
+    -fx-cursor: Hand;
+}
+.txt-UserName{
+    -fx-background-radius: 10px;
+}
