@@ -3,7 +3,7 @@ package lk.ijse.client3.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import lk.ijse.client1.util.Navigation;
+import lk.ijse.client3.util.Navigation;
 
 import java.io.IOException;
 
