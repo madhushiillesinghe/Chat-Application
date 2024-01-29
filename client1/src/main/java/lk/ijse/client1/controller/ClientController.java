@@ -18,17 +18,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import lk.ijse.client1.util.Navigation;
+import javafx.stage.FileChooser;
 
 import java.io.*;
 import java.net.Socket;
 import java.net.URL;
+import java.nio.file.Files;
+import java.util.Base64;
 import java.util.ResourceBundle;
 
 public class ClientController extends Thread implements Initializable {
-
-    @FXML
-    private ImageView addImg;
 
     @FXML
     private ImageView img1;
@@ -52,169 +51,181 @@ public class ClientController extends Thread implements Initializable {
     private VBox msgVbox;
     @FXML
     private JFXButton btnSend;
+    private String encodeImage;
 
     @FXML
-    private TextField txtMessage;
-    BufferedReader reader;
-    Socket socket;
-    PrintWriter writer;
-
+    public  TextField txtMessage;
     @FXML
     public Pane imojiPaneId;
-    private static ClientController controller;
+    private BufferedReader reader;
+    private Socket socket;
+    private File file;
+    private PrintWriter writer;
 
-    public ClientController(){
-        controller = this;
-    }
-
-    public static ClientController getInstance(){
-        return controller;
-    }
 
 
     @FXML
     void img1OnAction(MouseEvent event) {
+        String SmilingFaceImoji = "\uD83D\uDE0A";
+        txtMessage.appendText(SmilingFaceImoji);
     }
 
     @FXML
     void img2OnAction(MouseEvent event) {
-
+        String CryingFaceImoji = "\uD83D\uDE22";
+        txtMessage.appendText(CryingFaceImoji);
     }
 
     @FXML
     void img3OnAction(MouseEvent event) {
-
+        String CryingFaceImoji = "\uD83D\uDE0D";
+        txtMessage.appendText(CryingFaceImoji);
     }
 
     @FXML
     void img4OnAction(MouseEvent event) {
-
+        String TearWithJoyFaceImoji = "\uD83D\uDE02";
+        txtMessage.appendText(TearWithJoyFaceImoji);
     }
 
     @FXML
     void img5OnAction(MouseEvent event) {
-
+        String thumbsUp = "\uD83D\uDC4D";
+        writer.println(lblClientName.getText() + ": " + thumbsUp);
     }
 
 
     @FXML
     void btnSendOnAction(ActionEvent event) {
-        System.out.println("send button"+txtMessage.getText());
-        if(!(txtMessage.getText().isEmpty())) {
-            String message = txtMessage.getText();
-            System.out.println("message"+lblClientName.getText()+": "+ message);
-            writer.println(lblClientName.getText()+": "+ message);
-            if (message.equalsIgnoreCase("bye")) {
-                System.exit(0);
-            }
-            txtMessage.clear();
-        }else
-            new Alert(Alert.AlertType.ERROR, "Please enter your message! ").show();
+        System.out.println(file);
+        if (file != null) {
+            writer.println("img" + lblClientName.getText() + ":" + encodeImage);
+            file = null;
+        } else {
+            writer.println(LoginController.userName + ":" + txtMessage.getText());
+        }
+        txtMessage.clear();
+        imojiPaneId.setVisible(false);
+        txtMessage.setEditable(true);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblClientName.setText(LoginController.userName);
-        new Thread(() ->{
+        new Thread(() -> {
             connectSocket();
         }).start();
     }
 
     private void connectSocket() {
-            try {
-                socket = new Socket("localhost", 5600);
-                System.out.println(LoginController.userName + " Connected");
+        try {
+            System.out.println(LoginController.userName + " Connected");
+            socket = new Socket("localhost", 5600);
+            reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            writer = new PrintWriter(socket.getOutputStream(), true);
+            while (true) {
+                String message = reader.readLine();
+                String[] splitMessage = message.split(":");
+                String userName = splitMessage[0];
+                String typeMessage = splitMessage[1];
+                String fName = "";
+                if (userName.length() > 3) {
+                    fName = userName.substring(0, 3);
+                    System.out.println("ftg" + fName);
+                }
+                if (fName.equalsIgnoreCase("img")) {
+                } else {
+                    if (LoginController.userName.equalsIgnoreCase(userName)) {
+                        if (!typeMessage.isEmpty()) {
+                            HBox hBox = new HBox();
+                            hBox.setAlignment(Pos.CENTER_RIGHT);
+                            hBox.setPadding(new Insets(5, 10, 5, 10));
 
-                reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                writer = new PrintWriter(socket.getOutputStream(), true);
-                while (true) {
-                    String message = reader.readLine();
-                    String[] splitMessage=message.split(":");
-                    String userName=splitMessage[0];
-                    String typeMessage=splitMessage[1];
-                    String fName="";
-                    if(userName.length()>3){
-                        fName=userName.substring(0,3);
-                        System.out.println("ftg"+fName);
-                    }
-                    if(fName.equalsIgnoreCase("img")){
-                    }else {
-                        if(LoginController.userName.equalsIgnoreCase(userName)){
-                            if(!typeMessage.isEmpty()){
-                                HBox hBox=new HBox();
-                                hBox.setAlignment(Pos.CENTER_RIGHT);
-                                hBox.setPadding(new Insets(5,10,5,10));
+                            HBox innerhbox = new HBox();
+                            innerhbox.setPadding(new Insets(1, 10, 2, 10));
+                            innerhbox.setStyle(
+                                    "-fx-background-color: #25479b;" +
+                                            "-fx-background-radius: 15px"
+                            );
 
-                                HBox innerhbox=new HBox();
-                                innerhbox.setPadding(new Insets(1,10,2,10));
-                                innerhbox.setStyle(
-                                        "-fx-background-color: #25479b;"+
-                                        "-fx-background-radius: 15px"
-                                );
+                            Text text = new Text(typeMessage);
+                            TextFlow textFlow = new TextFlow(text);
+                            textFlow.setPadding(new Insets(5, 10, 5, 10));
 
-                                Text text=new Text(typeMessage);
-                                TextFlow textFlow=new TextFlow(text);
-                                textFlow.setPadding(new Insets(5,10,5,10));
+                            innerhbox.getChildren().add(textFlow);
 
-                                innerhbox.getChildren().add(textFlow);
-
-                                hBox.getChildren().add(innerhbox);
-                                Platform.runLater(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        msgVbox.getChildren().add(hBox);
-                                    }
-                                });
-                            }
+                            hBox.getChildren().add(innerhbox);
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    msgVbox.getChildren().add(hBox);
+                                }
+                            });
                         }
-                        else {
-                            if(!LoginController.userName.equalsIgnoreCase(userName)){
-                                HBox hBox=new HBox();
-                                hBox.setAlignment(Pos.CENTER_LEFT);
-                                hBox.setPadding(new Insets(5,10,5,10));
+                    } else {
+                        if (!LoginController.userName.equalsIgnoreCase(userName)) {
+                            HBox hBox = new HBox();
+                            hBox.setAlignment(Pos.CENTER_LEFT);
+                            hBox.setPadding(new Insets(5, 10, 5, 10));
 
-                                HBox innerhbox=new HBox();
-                                innerhbox.setPadding(new Insets(1,10,2,10));
-                                innerhbox.setStyle(
-                                        "-fx-background-color: #5e65e0;"+
-                                        "-fx-background-radius: 15px"
-                                );
+                            HBox innerhbox = new HBox();
+                            innerhbox.setPadding(new Insets(1, 10, 2, 10));
+                            innerhbox.setStyle(
+                                    "-fx-background-color: #5e65e0;" +
+                                            "-fx-background-radius: 15px"
+                            );
 
-                                Text txtUser=new Text(userName+":" );
-                                txtUser.setFont(Font.font(12.5));
+                            Text txtUser = new Text(userName + ":");
+                            txtUser.setFont(Font.font(12.5));
 
-                                Text text=new Text(typeMessage);
-                                TextFlow textFlow=new TextFlow(txtUser,text);
-                                textFlow.setPadding(new Insets(5,10,5,10));
+                            Text text = new Text(typeMessage);
+                            TextFlow textFlow = new TextFlow(txtUser, text);
+                            textFlow.setPadding(new Insets(5, 10, 5, 10));
 
-                                innerhbox.getChildren().add(textFlow);
+                            innerhbox.getChildren().add(textFlow);
 
-                                hBox.getChildren().add(innerhbox);
-                                Platform.runLater(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        msgVbox.getChildren().add(hBox);
-                                    }
-                                });
-                            }
+                            hBox.getChildren().add(innerhbox);
+                            //vobx ekt h box eka set karno
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    msgVbox.getChildren().add(hBox);
+                                }
+                            });
                         }
                     }
                 }
-            } catch (IOException e) {
-                System.out.println(e);
             }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-
-    public void addImageOnAction(MouseEvent mouseEvent) throws IOException {
-    }
-
-    public void imojiOnAction(MouseEvent mouseEvent) throws IOException {
-        Navigation.popupPane("ImojiPaneForm.fxml");
-
-    }
 
     public void txtOnAction(ActionEvent actionEvent) {
         btnSendOnAction(actionEvent);
+    }
+
+    public void imojiOnAction(ActionEvent actionEvent) {
+        imojiPaneId.setVisible(!imojiPaneId.isVisible());
+    }
+
+    public void fileOnAction(ActionEvent actionEvent) throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select an Image");
+        // only select this extension include image
+        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("image files", "*.jpeg", "*.jpg", "*.png", "*.gif");
+        fileChooser.getExtensionFilters().add(extensionFilter);
+        //window eka open krl denne meken
+        file = fileChooser.showOpenDialog(txtMessage.getScene().getWindow());
+        if (file != null) {
+            txtMessage.setText("File Selected");
+            txtMessage.setEditable(false);
+            //argument ekk widiyt pass krnwa file path eka
+            byte[] imageToByte = Files.readAllBytes(file.toPath());
+            //yawna image eka encode kranna puluwn decoder use krnne inizilize method ekedi decoder krgnno
+            encodeImage = Base64.getEncoder().encodeToString(imageToByte);
+            btnSendOnAction(actionEvent);
+        }
     }
 }

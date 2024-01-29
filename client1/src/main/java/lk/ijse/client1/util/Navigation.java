@@ -33,15 +33,6 @@ public class Navigation {
         stage.centerOnScreen();
         stage.show();
     }
-    public static void switchPaging(Pane pane, String path) throws IOException {
-        pane.getChildren().clear();
-        ClientController.getInstance().imojiPaneId.setVisible(true);
-        FXMLLoader loader = new FXMLLoader(Navigation.class.getResource("/view/"+path));
-        Parent root = loader.load();
-        pane.getChildren().add(root);
-    }
-    public static void popupPane(String path) throws IOException {
-        ClientController.getInstance().imojiPaneId.setVisible(true);
-        switchPaging(ClientController.getInstance().imojiPaneId, path);
-    }
+
+
 }
