@@ -35,4 +35,9 @@ public class Navigation {
     }
 
 
+    public static void minimize() {
+        if(stage!=null){
+            stage.setIconified(true);
+        }
+    }
 }

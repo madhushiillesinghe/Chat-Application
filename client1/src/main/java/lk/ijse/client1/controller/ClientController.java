@@ -20,6 +20,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
+import lk.ijse.client1.util.Navigation;
 
 import java.io.*;
 import java.net.Socket;
@@ -295,5 +296,9 @@ public class ClientController extends Thread implements Initializable {
             encodeImage = Base64.getEncoder().encodeToString(imageToByte);
             btnSendOnAction(actionEvent);
         }
+    }
+
+    public void minimizeButtonOnAction(ActionEvent actionEvent) {
+        Navigation.minimize();
     }
 }
