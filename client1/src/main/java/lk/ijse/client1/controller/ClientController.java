@@ -18,6 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import lk.ijse.client1.util.Navigation;
@@ -94,13 +95,11 @@ public class ClientController extends Thread implements Initializable {
     @FXML
     void img5OnAction(MouseEvent event) {
         String thumbsUp = "\uD83D\uDC4D";
-        writer.println(lblClientName.getText() + ": " + thumbsUp);
-    }
+        txtMessage.appendText(thumbsUp);}
 
 
     @FXML
     void btnSendOnAction(ActionEvent event) {
-        System.out.println(file);
         if (file != null) {
             writer.println("img" + lblClientName.getText() + ":" + encodeImage);
             file = null;
@@ -114,8 +113,6 @@ public class ClientController extends Thread implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lblClientName.setText(LoginController.userName);
-        new Thread(() -> {
             lblClientName.setText(LoginController.userName);
             new Thread(() -> {
                 try {
@@ -130,9 +127,11 @@ public class ClientController extends Thread implements Initializable {
                         String typeMessage = splitMessage[1];
                         String fName = "";
                         if (userName.length() > 3) {
+                            //kotaswalt kadno
                             fName = userName.substring(0, 3);
                             System.out.println("ftg" + fName);
                         }
+                        //case eka adalm na
                         if (fName.equalsIgnoreCase("img")) {
                             String path=typeMessage;
                             //assign to the byte type array
@@ -171,9 +170,16 @@ public class ClientController extends Thread implements Initializable {
                             if(lblClientName.getText().equalsIgnoreCase(realName)){
                                 innerBox.setStyle(
                                         "-fx-background-color: #25479b;" +
-                                                "-fx-background-radius: 15px"
+                                        "-fx-background-radius: 15px"
                                 );
-                                innerBox.getChildren().add(imageHbox);
+
+                                Label textTime=new Label(Navigation.timeNow());
+                                textTime.setFont(Font.font(10.5));
+
+                                HBox hBoxTime=new HBox(textTime);
+                                hBoxTime.setAlignment(Pos.BOTTOM_RIGHT);
+
+                                innerBox.getChildren().addAll(imageHbox,hBoxTime);
                                 hBox.getChildren().add(innerBox);
                                 hBox.setAlignment(Pos.TOP_RIGHT);
 
@@ -186,7 +192,13 @@ public class ClientController extends Thread implements Initializable {
                                 Text txtUser = new Text(""+realName + ":");
                                 txtUser.setFont(Font.font(12.5));
 
-                                innerBox.getChildren().addAll(txtUser,imageHbox);
+                                Label textTime=new Label(Navigation.timeNow());
+                                textTime.setFont(Font.font(10.5));
+
+                                HBox hBoxTime=new HBox(textTime);
+                                hBoxTime.setAlignment(Pos.BOTTOM_RIGHT);
+
+                                innerBox.getChildren().addAll(txtUser,imageHbox,hBoxTime);
                                 hBox.getChildren().add(innerBox);
                                 hBox.setAlignment(Pos.TOP_LEFT);
 
@@ -215,10 +227,17 @@ public class ClientController extends Thread implements Initializable {
                                     );
 
                                     Text text = new Text(typeMessage);
+
+                                    Label textTime=new Label(Navigation.timeNow());
+                                    textTime.setFont(Font.font(10.5));
+
+                                    HBox hBoxTime=new HBox(textTime);
+                                    hBoxTime.setAlignment(Pos.BOTTOM_RIGHT);
+
                                     TextFlow textFlow = new TextFlow(text);
                                     textFlow.setPadding(new Insets(5, 10, 5, 10));
 
-                                    innerhbox.getChildren().add(textFlow);
+                                    innerhbox.getChildren().addAll(textFlow,hBoxTime);
 
                                     hBox.getChildren().add(innerhbox);
                                     Platform.runLater(new Runnable() {
@@ -245,10 +264,18 @@ public class ClientController extends Thread implements Initializable {
                                     txtUser.setFont(Font.font(12.5));
 
                                     Text text = new Text(typeMessage);
+
+                                    Label textTime=new Label(Navigation.timeNow());
+                                    textTime.setFont(Font.font(10.5));
+
+                                    HBox hBoxTime=new HBox(textTime);
+                                    hBoxTime.setAlignment(Pos.BOTTOM_RIGHT);
+
+
                                     TextFlow textFlow = new TextFlow(txtUser, text);
                                     textFlow.setPadding(new Insets(5, 10, 5, 10));
 
-                                    innerhbox.getChildren().add(textFlow);
+                                    innerhbox.getChildren().addAll(textFlow,hBoxTime);
 
                                     hBox.getChildren().add(innerhbox);
                                     //vobx ekt h box eka set karno
@@ -266,7 +293,6 @@ public class ClientController extends Thread implements Initializable {
                     throw new RuntimeException(e);
                 }
             }).start();
-        }).start();
     }
 
 

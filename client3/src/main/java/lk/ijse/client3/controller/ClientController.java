@@ -19,6 +19,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
+import lk.ijse.client3.util.Navigation;
 
 import java.io.*;
 import java.net.Socket;
@@ -169,7 +170,14 @@ public class ClientController extends Thread implements Initializable {
                                     "-fx-background-color: #25479b;" +
                                             "-fx-background-radius: 15px"
                             );
-                            innerBox.getChildren().add(imageHbox);
+
+                            Label textTime=new Label(Navigation.timeNow());
+                            textTime.setFont(Font.font(10.5));
+
+                            HBox hBoxTime=new HBox(textTime);
+                            hBoxTime.setAlignment(Pos.BOTTOM_RIGHT);
+
+                            innerBox.getChildren().addAll(imageHbox,hBoxTime);
                             hBox.getChildren().add(innerBox);
                             hBox.setAlignment(Pos.TOP_RIGHT);
 
@@ -182,7 +190,13 @@ public class ClientController extends Thread implements Initializable {
                             Text txtUser = new Text(""+realName + ":");
                             txtUser.setFont(Font.font(12.5));
 
-                            innerBox.getChildren().addAll(txtUser,imageHbox);
+                            Label textTime=new Label(Navigation.timeNow());
+                            textTime.setFont(Font.font(10.5));
+
+                            HBox hBoxTime=new HBox(textTime);
+                            hBoxTime.setAlignment(Pos.BOTTOM_RIGHT);
+
+                            innerBox.getChildren().addAll(txtUser,imageHbox,hBoxTime);
                             hBox.getChildren().add(innerBox);
                             hBox.setAlignment(Pos.TOP_LEFT);
 
@@ -214,7 +228,13 @@ public class ClientController extends Thread implements Initializable {
                                 TextFlow textFlow = new TextFlow(text);
                                 textFlow.setPadding(new Insets(5, 10, 5, 10));
 
-                                innerhbox.getChildren().add(textFlow);
+                                Label textTime=new Label(Navigation.timeNow());
+                                textTime.setFont(Font.font(10.5));
+
+                                HBox hBoxTime=new HBox(textTime);
+                                hBoxTime.setAlignment(Pos.BOTTOM_RIGHT);
+
+                                innerhbox.getChildren().addAll(textFlow,hBoxTime);
 
                                 hBox.getChildren().add(innerhbox);
                                 Platform.runLater(new Runnable() {
@@ -240,11 +260,17 @@ public class ClientController extends Thread implements Initializable {
                                 Text txtUser = new Text(userName + ":");
                                 txtUser.setFont(Font.font(12.5));
 
+                                Label textTime=new Label(Navigation.timeNow());
+                                textTime.setFont(Font.font(10.5));
+
+                                HBox hBoxTime=new HBox(textTime);
+                                hBoxTime.setAlignment(Pos.BOTTOM_RIGHT);
+
                                 Text text = new Text(typeMessage);
                                 TextFlow textFlow = new TextFlow(txtUser, text);
                                 textFlow.setPadding(new Insets(5, 10, 5, 10));
 
-                                innerhbox.getChildren().add(textFlow);
+                                innerhbox.getChildren().addAll(textFlow,hBoxTime);
 
                                 hBox.getChildren().add(innerhbox);
                                 //vobx ekt h box eka set karno

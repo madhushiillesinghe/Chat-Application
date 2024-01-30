@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import lk.ijse.client1.controller.ClientController;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Navigation {
     private static Stage stage;
@@ -34,7 +36,10 @@ public class Navigation {
         stage.show();
     }
 
-
+    public static String timeNow() {
+        SimpleDateFormat dateFormat=new SimpleDateFormat("hh:mm");
+        return dateFormat.format(new Date()) ;
+    }
     public static void minimize() {
         if(stage!=null){
             stage.setIconified(true);
