@@ -169,7 +169,7 @@ public class ClientController extends Thread implements Initializable {
                             //use name capitaor simple no problem
                             if(lblClientName.getText().equalsIgnoreCase(realName)){
                                 innerBox.setStyle(
-                                        "-fx-background-color: #25479b;" +
+                                        "-fx-background-color: #0077cc;" +
                                                 "-fx-background-radius: 15px"
                                 );
 
@@ -186,7 +186,7 @@ public class ClientController extends Thread implements Initializable {
                                 hBox.setPadding(new Insets(5,5,5,10));
                             }else {
                                 innerBox.setStyle(
-                                        "-fx-background-color: #5e65e0;" +
+                                        "-fx-background-color: #3498db;" +
                                                 "-fx-background-radius: 15px"
                                 );
                                 Text txtUser = new Text(""+realName + ":");
@@ -222,7 +222,7 @@ public class ClientController extends Thread implements Initializable {
                                     HBox innerhbox = new HBox();
                                     innerhbox.setPadding(new Insets(1, 10, 2, 10));
                                     innerhbox.setStyle(
-                                            "-fx-background-color: #25479b;" +
+                                            "-fx-background-color: #0077cc;" +
                                                     "-fx-background-radius: 15px"
                                     );
 
@@ -255,7 +255,7 @@ public class ClientController extends Thread implements Initializable {
                                     HBox innerhbox = new HBox();
                                     innerhbox.setPadding(new Insets(1, 10, 2, 10));
                                     innerhbox.setStyle(
-                                            "-fx-background-color: #5e65e0;" +
+                                            "-fx-background-color: #3498db;" +
                                                     "-fx-background-radius: 15px"
                                     );
 
