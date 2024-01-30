@@ -324,7 +324,12 @@ public class ClientController extends Thread implements Initializable {
         }
     }
 
-    public void minimizeButtonOnAction(ActionEvent actionEvent) {
+
+    public void btnMinimizeOnAction(ActionEvent actionEvent) {
         Navigation.minimize();
+    }
+
+    public void btnCloseOnAction(ActionEvent actionEvent) {
+        System.exit(0);
     }
 }
