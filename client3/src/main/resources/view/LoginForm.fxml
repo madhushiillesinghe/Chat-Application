@@ -6,30 +6,46 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.client3.controller.LoginController">
+<AnchorPane prefHeight="600.0" prefWidth="1069.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.client3.controller.LoginController">
    <children>
-      <Button layoutX="634.0" layoutY="391.0" mnemonicParsing="false" onAction="#btnLoginOnAction" styleClass="btn-Login" text="LOGIN">
-         <stylesheets>
-            <URL value="@../style/LoginStyle.css" />
-            <URL value="@../style/LoginStyle.css" />
-         </stylesheets></Button>
-      <TextField fx:id="txtUserName" layoutX="585.0" layoutY="259.0" promptText="           User Name" styleClass="txt-UserName" stylesheets="@../style/LoginStyle.css" />
       <AnchorPane prefHeight="518.0" prefWidth="372.0" style="-fx-background-color: white;" />
-      <ImageView fitHeight="600.0" fitWidth="471.0">
+      <ImageView fitHeight="754.0" fitWidth="1077.0" layoutX="-1.0">
          <image>
-            <Image url="@../assest/Login.png" />
+            <Image url="@../assest/LoginNew.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="82.0" fitWidth="83.0" layoutX="618.0" layoutY="134.0">
-         <image>
-            <Image url="@../assest/user.jpeg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="63.0" fitWidth="70.0" layoutX="492.0" layoutY="341.0">
+      <ImageView fitHeight="45.0" fitWidth="59.0" layoutX="38.0" layoutY="40.0">
          <image>
             <Image url="@../assest/ChatImage.jpeg" />
          </image>
       </ImageView>
+      <Pane layoutX="279.0" layoutY="295.0" opacity="0.44" prefHeight="290.0" prefWidth="466.0" style="-fx-background-color: white; -fx-background-radius: 25;">
+         <children>
+            <ImageView fitHeight="34.0" fitWidth="39.0" layoutX="206.0" layoutY="14.0">
+               <image>
+                  <Image url="@../assest/user.jpeg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="txtUserName" layoutX="158.0" layoutY="98.0" promptText="           User Name" styleClass="txt-UserName" stylesheets="@../style/LoginStyle.css" />
+            <Button layoutX="206.0" layoutY="203.0" mnemonicParsing="false" onAction="#btnLoginOnAction" styleClass="btn-Login" text="LOGIN">
+               <stylesheets>
+                  <URL value="@../style/LoginStyle.css" />
+                  <URL value="@../style/LoginStyle.css" />
+               </stylesheets>
+            </Button>
+         </children>
+      </Pane>
+      <Text fontSmoothingType="LCD" layoutX="372.0" layoutY="193.0" stroke="#e6ece3b8" strokeType="OUTSIDE" strokeWidth="3.0" text="PLAY TEXT Pvt Ltd" textAlignment="JUSTIFY">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Text>
+      <Text layoutX="430.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Play Games and enjoy your free Time" />
+      <Text layoutX="24.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login to get yor own Chat Room" wrappingWidth="186.74453735351562" />
+      <Text layoutX="48.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For Your device" />
    </children>
 </AnchorPane>
