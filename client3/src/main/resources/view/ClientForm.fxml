@@ -18,7 +18,7 @@
          <children>
             <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="22.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../client1/src/main/resources/assest/user.jpeg" />
+                  <Image url="@../assest/user.jpeg" />
                </image>
             </ImageView>
             <Label fx:id="lblClientName" layoutX="57.0" layoutY="17.0" prefHeight="25.0" prefWidth="115.0" text="client name" textFill="#e4c9c9">
@@ -26,18 +26,18 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <ImageView fitHeight="21.0" fitWidth="23.0" layoutX="470.0" layoutY="19.0">
+            <ImageView fitHeight="21.0" fitWidth="23.0" layoutX="496.0" layoutY="19.0">
                <image>
                   <Image url="@../assest/minimizeIcon.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="21.0" fitWidth="23.0" layoutX="503.0" layoutY="20.0">
+            <ImageView fitHeight="21.0" fitWidth="23.0" layoutX="541.0" layoutY="19.0">
                <image>
                   <Image url="@../assest/closeIcon.png" />
                </image>
             </ImageView>
-            <JFXButton layoutX="465.0" layoutY="17.0" onAction="#btnMinimizeOnAction" prefHeight="26.0" prefWidth="29.0" />
-            <JFXButton layoutX="500.0" layoutY="18.0" onAction="#btnCloseOnAction" prefHeight="25.0" prefWidth="29.0" />
+            <JFXButton layoutX="493.0" layoutY="18.0" onAction="#btnMinimizeOnAction" prefHeight="26.0" prefWidth="29.0" />
+            <JFXButton layoutX="541.0" layoutY="18.0" onAction="#btnCloseOnAction" prefHeight="25.0" prefWidth="29.0" />
          </children>
       </Pane>
       <ScrollPane layoutY="64.0" prefHeight="490.0" prefWidth="596.0">
